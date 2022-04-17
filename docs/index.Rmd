@@ -60,7 +60,7 @@ modern_family %>%
 
 ```
 
-## Gráfico de audiência média por temporada 
+## Gráfico da audiência média por temporada 
 
 
 ```{r echo = FALSE, epi = 300}
