@@ -49,9 +49,9 @@ modern_family %>%
 
   title = 
   "
-  <span style='color:grey25;font-size:30px'>Audiência nos episódios de
-  <span style='font-family:Archivo; color:#1D1D1D;  font-size:35px'>modern
-  <span style='font-family:Prata;   color:#C64E24;  font-size:35px'>family
+  <span style='color:grey25;font-size:25px'>Audiência nos episódios de
+  <span style='font-family:Archivo; color:#1D1D1D;  font-size:30px'>modern
+  <span style='font-family:Prata;   color:#C64E24;  font-size:30px'>family
   "
 
       ) +
@@ -86,9 +86,9 @@ modern_family %>%
 
   title = 
   "
-  <span style='color:grey25;font-size:30px'>Audiência na temporada de
-  <span style='font-family:Archivo; color:#1D1D1D;  font-size:35px'>modern
-  <span style='font-family:Prata;   color:#C64E24;  font-size:35px'>family
+  <span style='color:grey25;font-size:25px'>Audiência na temporada de
+  <span style='font-family:Archivo; color:#1D1D1D;  font-size:30px'>modern
+  <span style='font-family:Prata;   color:#C64E24;  font-size:30px'>family
   "
 
       ) +

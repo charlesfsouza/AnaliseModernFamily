@@ -5,7 +5,7 @@ tema_modern_family <- function(variables) {
     text = element_text(
       colour = "grey25",
       family = "Prata",
-      size = 12
+      size = 9
     ),
 
     axis.text = element_text(color = "grey25"),
