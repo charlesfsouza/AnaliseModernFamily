@@ -1,0 +1,100 @@
+---
+title: "Modern Family: audiência das últimas cinco temporadas"
+author: "Charles Ferreira"
+date: "`r Sys.Date()`"
+output:
+  prettydoc::html_pretty:
+    theme: architect
+    highlight: github
+---
+
+```{r message=FALSE, warning=FALSE, include=FALSE}
+library(dplyr)
+library(ggplot2)
+library(showtext)
+library(ggtext) #remotes::install_github("wilkelab/ggtext")
+source("../R/tema_modern_family.R")
+## Loading Google fonts (https://fonts.google.com/)
+font_add_google("Prata", "Prata")
+font_add_google("Archivo", "Archivo")
+showtext_auto()
+```
+
+
+```{r echo=FALSE}
+modern_family <- 
+  readr::read_rds("../data/modern_family.rds")
+```
+
+Os dados foram obtidos no site [Wikipedia](https://en.wikipedia.org/wiki/List_of_Modern_Family_episodes)
+
+## Gráfico da audiência por episódio 
+
+```{r echo = FALSE, api = 300}
+modern_family %>%
+  mutate(
+    num_episodio = seq(min(num_episodio),length.out = length(num_episodio)),
+    num_temporada = as.factor(num_temporada)
+    ) %>%
+  ggplot() +
+  geom_col(aes(x = num_episodio, 
+               y = qtd_espectadores_EUA,
+               fill = num_temporada)) +
+ 
+  labs(
+    x = "Número do episódio",
+    y = "Audiência nos EUA (em milhões)",
+    fill = "Temporada",
+
+
+  title = 
+  "
+  <span style='color:grey25;font-size:30px'>Audiência nos episódios de
+  <span style='font-family:Archivo; color:#1D1D1D;  font-size:35px'>modern
+  <span style='font-family:Prata;   color:#C64E24;  font-size:35px'>family
+  "
+
+      ) +
+  scale_fill_modern_family() +
+  tema_modern_family()
+
+```
+
+## Gráfico de audiência média por temporada 
+
+
+```{r echo = FALSE, epi = 300}
+modern_family %>%
+  mutate(
+    num_episodio = seq(min(num_episodio),length.out = length(num_episodio)),
+    num_temporada = as.factor(num_temporada)
+    ) %>%
+  group_by(num_temporada) %>%
+  summarise(
+    audiencia_media = mean(qtd_espectadores_EUA, na.rm = TRUE)
+  ) %>%
+  ggplot() +
+  geom_col(aes(x = num_temporada, 
+               y = audiencia_media,
+               fill = num_temporada,
+               ),
+           show.legend = FALSE) +
+  labs(
+    x = "Temporada",
+    y = "Audiência média nos EUA (em milhões)",
+#    title = "Audiência (em milhões) nos episódios de Modern Family"
+
+  title = 
+  "
+  <span style='color:grey25;font-size:30px'>Audiência na temporada de
+  <span style='font-family:Archivo; color:#1D1D1D;  font-size:35px'>modern
+  <span style='font-family:Prata;   color:#C64E24;  font-size:35px'>family
+  "
+
+      ) +
+  scale_fill_modern_family() +
+  tema_modern_family()
+
+
+```
+
